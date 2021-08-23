@@ -1,0 +1,61 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: shuai123
+  #  Redis配置
+  redis:
+    timeout: 10000ms             # 连接超时时间
+    host: localhost       # Redis服务器地址
+    port: 6379                # Redis服务器端口
+    database: 0               # 选择哪个库，默认0库
+    lettuce:
+      pool:
+        max-active: 1024           # 最大连接数，默认 8
+        max-wait: 10000ms          # 最大连接阻塞等待时间，单位毫秒，默认 -1
+        max-idle: 200            # 最大空闲连接，默认 8
+        min-idle: 5
+#  elasticsearch配置
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+
+
+
+#  security:
+#    user:
+#      name: sy
+#      password: 11
+# 配置邮件
+  mail:
+    #默认发送邮件基于smtp协议 可不要
+    protocol: smtp
+    #smtp服务器地址
+    host: smtp.qq.com
+    #发送方的邮箱
+    username: ******
+    #发送方的密码（授权码或者QQ邮箱密码都可以）
+    password: *****
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8082
+
+sy:
+  jwt:
+    header: Authorization
+    expire: 604800
+    secret: haddfgeuw1ds
